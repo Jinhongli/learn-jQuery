@@ -10,7 +10,7 @@
                 return factory(w);
             };
     }else{
-        // 浏览器环境下，不使用CommonJS语法加载jQuery，绑定jQuery至window
+        // 不使用CommonJS语法加载jQuery，直接绑定jQuery至window
         factory(global);
     }
 })(typeof window !== 'undefined' ? window : this, function(window, noGlobal) {
