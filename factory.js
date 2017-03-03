@@ -65,4 +65,7 @@ function factory(global, noGlobal) {
         sort: arr.sort,
         splice: arr.splice
     };
+    // 深度克隆
+    jQuery.extend = jQuery.fn.extend = function(){};
+
 }
