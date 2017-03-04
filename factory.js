@@ -84,4 +84,26 @@ function factory(global, noGlobal) {
         map: function(elem, callback, arg){},
         proxy: function(fn, context){}
     });
+
+    if ( typeof Symbol === "function" ) {
+        jQuery.fn[ Symbol.iterator ] = arr[ Symbol.iterator ];
+    }
+    jQuery.each( "Boolean Number String Function Array Date RegExp Object Error Symbol".split( " " ), function( i, name ) {
+            class2type[ "[object " + name + "]" ] = name.toLowerCase();
+    } );
+    function isArrayLike(obj){}
+
+    // CSS选择器引擎
+    var Sizzle = (function(window){})(window);
+
+    jQuery.find = Sizzle;
+    jQuery.expr = Sizzle.selectors;
+
+    // 不赞成的用法??
+    jQuery.expr[ ":" ] = jQuery.expr.pseudos;
+    jQuery.uniqueSort = jQuery.unique = Sizzle.uniqueSort;
+    jQuery.text = Sizzle.getText;
+    jQuery.isXMLDoc = Sizzle.isXML;
+    jQuery.contains = Sizzle.contains;
+    jQuery.escapeSelector = Sizzle.escape;
 }
