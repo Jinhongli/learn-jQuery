@@ -36,7 +36,7 @@ function factory(global, noGlobal) {
         },
         /**
          * jQuery是一个函数，用来生成jQuery对象,该对象是jQuery原型对象上init构造方法的一个实例
-         * @param  {Vary} selector 选择器
+         * @param  {Variety} selector 选择器
          * @param  {Object} context  当前环境
          * @return {Object}          jQuery原型对象init构造函数的实例
          */
