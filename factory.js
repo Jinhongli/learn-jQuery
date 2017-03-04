@@ -15,17 +15,8 @@ function factory(global, noGlobal) {
     var fnToString = hasOwn.toString;
     var ObjectFunctionString = fnToString.call(Object);
     var support = {};
-    /**
-     * 在页面中插入代码并执行
-     * @param {String} code 代码内容
-     * @param {Node} doc  document节点
-     */
-    function DOMEval(code, doc) {
-        doc = doc || document; // 默认为全局document
-        var script = doc.createElement("script");
-        script.text = code; // 写入代码
-        doc.head.appendChild(script).parentNode.removeChild(script); // 插入代码并执行
-    }
+
+    function DOMEval(code, doc) {}
 
     var version = '3.1.1', // 只是说明版本
         rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
@@ -36,9 +27,6 @@ function factory(global, noGlobal) {
         },
         /**
          * jQuery是一个函数，用来生成jQuery对象,该对象是jQuery原型对象上init构造方法的一个实例
-         * @param  {Variety} selector 选择器
-         * @param  {Object} context  当前环境
-         * @return {Object}          jQuery原型对象init构造函数的实例
          */
         jQuery = function(selector, context) {
             return new jQuery.fn.init(selector, context);
@@ -68,4 +56,32 @@ function factory(global, noGlobal) {
     // 深度克隆
     jQuery.extend = jQuery.fn.extend = function(){};
 
+    // 扩展jQuery对象一些属性和方法
+    jQuery.extend({
+        expando: "jQuery" + ( version + Math.random() ).replace( /\D/g, "" ),
+        isReady: true,
+        guid: 1,
+        now: Date.now(),
+        support: support,
+        error: function(msg) {},
+        noop: function() {},
+        type: function(obj) {},
+        isFunction: function(obj) {},
+        isArray: Array.isArray,
+        isWindow: function(obj) {},
+        isNumeric: function(obj) {},
+        isPlainObject: function(obj){},
+        isEmptyObject: function(obj){},
+        globalEval: function(code){},
+        camelCase: function(string){},
+        nodeName: function(elem, name){},
+        each: function(obj, callback){},
+        trim: function(text){},
+        makeArray: function(arr, results){},
+        inArray: function(elem, arr, i){},
+        merge: function(first, second){},
+        grep: function(elem, callback, invert){},
+        map: function(elem, callback, arg){},
+        proxy: function(fn, context){}
+    });
 }
